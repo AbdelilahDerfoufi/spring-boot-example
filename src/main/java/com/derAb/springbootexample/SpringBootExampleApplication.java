@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Objects;
+import java.util.List;
 
 @SpringBootApplication
 @RestController
@@ -17,41 +17,45 @@ public class SpringBootExampleApplication {
 
 	@GetMapping("/greet")
 	public GreetResponse greeting(){
-		return new GreetResponse("Hello Everyone");
+		return new GreetResponse("Hello Everyone",List.of("C++","Php","Java"), new Person("Der Ab", 26, 1000));
 	}
 
-	// record GreetResponse(String greet){}
+	record Person(String name, int age, double savings){}
 
-	class GreetResponse {
-		private final String greet;
+	record GreetResponse(String greet,
+						 List<String> favProgrammingLanguages,
+						 Person person){}
 
-		GreetResponse(String greet) {
-			this.greet = greet;
-		}
-
-		public String getGreet() {
-			return greet;
-		}
-
-		@Override
-		public String toString() {
-			return "GreetResponse{" +
-					"greet='" + greet + '\'' +
-					'}';
-		}
-
-		@Override
-		public boolean equals(Object o) {
-			if (this == o) return true;
-			if (o == null || getClass() != o.getClass()) return false;
-			GreetResponse that = (GreetResponse) o;
-			return Objects.equals(greet, that.greet);
-		}
-
-		@Override
-		public int hashCode() {
-			return Objects.hash(greet);
-		}
-	}
+//	class GreetResponse {
+//		private final String greet;
+//
+//		GreetResponse(String greet) {
+//			this.greet = greet;
+//		}
+//
+//		public String getGreet() {
+//			return greet;
+//		}
+//
+//		@Override
+//		public String toString() {
+//			return "GreetResponse{" +
+//					"greet='" + greet + '\'' +
+//					'}';
+//		}
+//
+//		@Override
+//		public boolean equals(Object o) {
+//			if (this == o) return true;
+//			if (o == null || getClass() != o.getClass()) return false;
+//			GreetResponse that = (GreetResponse) o;
+//			return Objects.equals(greet, that.greet);
+//		}
+//
+//		@Override
+//		public int hashCode() {
+//			return Objects.hash(greet);
+//		}
+//	}
 
 }
