@@ -14,9 +14,11 @@ public class SpringBootExampleApplication {
 	}
 
 	@GetMapping("/greet")
-	public String greeting()
+	public GreetResponse greeting()
 	{
-		return "Hello everyone";
+		return new GreetResponse("Hello Everyone");
 	}
+
+	record GreetResponse(String greet){}
 
 }
