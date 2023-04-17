@@ -3,8 +3,8 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: DER_AB
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: abdou
+      POSTGRES_PASSWORD: springboot
       PGDATA: /data/postgres
     volumes:
       - db:/data/potgres
