@@ -13,6 +13,14 @@ import java.util.List;
 @RequestMapping("/api/v1/customer")
 public class SpringBootExampleApplication {
 
+	private final CustomerRepository customerRepository;
+
+	public SpringBootExampleApplication(CustomerRepository customerRepository) {
+		this.customerRepository = customerRepository;
+	}
+
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootExampleApplication.class, args);
 	}
@@ -61,7 +69,7 @@ public class SpringBootExampleApplication {
 //	}
 
 	@GetMapping
-	public List<Customer> getCustomer() {
-		return List.of();
+	public List<Customer> getCustomers() {
+		return customerRepository.findAll();
 	}
 }
